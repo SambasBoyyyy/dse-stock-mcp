@@ -1,6 +1,6 @@
 # DSE Stock MCP Server
 
-An MCP (Model Context Protocol) server that provides real-time and historical data for Dhaka Stock Exchange symbols, with a robust symbol resolver.
+A very first MCP (Model Context Protocol) server that provides real-time and historical data for Dhaka Stock Exchange symbols, with a robust symbol resolver.
 
 ## Features
 
@@ -17,10 +17,21 @@ An MCP (Model Context Protocol) server that provides real-time and historical da
 - `get_historical_data(symbol, start_date, end_date)`
 - `list_symbols()`
 Inputs can be trading codes (e.g., `GP`) or company names from the CSV.
+
+
 ## Installation
+
+Prerequisites:
+- Install Node.js LTS (includes npm and npx). Verify with:
+  - `npx -v` (npm 5.2+ includes npx)
+
+# Install dependencies
+npm install
+
+
 ## Claude-Desktop/Cursor Integration
 
-Add an entry to `.cursor/mcp.json` (workspace) or `~/.cursor/claude_desktop_config` (global):
+Copy this and paste into `.cursor/mcp.json` (workspace) or `~/.cursor/claude_desktop_config` (global):
 
 ```json
 {
@@ -36,5 +47,5 @@ Add an entry to `.cursor/mcp.json` (workspace) or `~/.cursor/claude_desktop_conf
 }
 ```
 
-Restart Claude-Desktop/Cursor to load the server.
+Restart Claude-Desktop/Cursor to load the server and You're Ready!!.
 
