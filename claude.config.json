@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "dse-stock-mcp": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "tsx",
+        "C:/Random Projects/dse stock mcp/template-mcp-server/src/index.ts"
+      ],
+      "env": {}
+    }
+  }
+}
+
