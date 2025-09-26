@@ -1,6 +1,7 @@
 import { FastMCP } from "fastmcp";
 import { z } from "zod";
 import * as services from "./services/index.js";
+import { resolveSymbol, listSymbols } from "./symbols/resolver.js";
 
 /**
  * Register all tools with the MCP server
@@ -28,6 +29,7 @@ export function registerTools(server: FastMCP) {
     execute: async ({ symbol }: { symbol: string }) => {
       const apiKey = getApiKey();
       const url = "https://web-production-ebd3.up.railway.app/tools/get_current_price";
+      const resolved = resolveSymbol(symbol);
       const response = await fetch(url, {
         method: "POST",
         headers: {
@@ -35,7 +37,7 @@ export function registerTools(server: FastMCP) {
           "Authorization": `Bearer ${apiKey}`,
           "x-api-key": apiKey
         },
-        body: JSON.stringify({ symbol })
+        body: JSON.stringify({ symbol: resolved.code })
       });
 
       if (!response.ok) {
@@ -62,6 +64,7 @@ export function registerTools(server: FastMCP) {
     ) => {
       const apiKey = getApiKey();
       const url = "https://web-production-ebd3.up.railway.app/tools/get_historical_data";
+      const resolved = resolveSymbol(symbol);
       const response = await fetch(url, {
         method: "POST",
         headers: {
@@ -69,7 +72,7 @@ export function registerTools(server: FastMCP) {
           "Authorization": `Bearer ${apiKey}`,
           "x-api-key": apiKey
         },
-        body: JSON.stringify({ symbol, start_date, end_date })
+        body: JSON.stringify({ symbol: resolved.code, start_date, end_date })
       });
 
       if (!response.ok) {
@@ -79,6 +82,29 @@ export function registerTools(server: FastMCP) {
 
       const data = await response.json();
       return JSON.stringify(data, null, 2);
+    }
+  });
+
+  // Utility: List supported DSE symbols (code and name)
+  server.addTool({
+    name: "list_symbols",
+    description: "List supported DSE trading codes with official names.",
+    parameters: z.object({}),
+    execute: async () => {
+      return JSON.stringify(listSymbols(), null, 2);
+    }
+  });
+
+  // Utility: Resolve free-text company name/alias to trading code
+  server.addTool({
+    name: "resolve_symbol",
+    description: "Resolve a company name or alias to a DSE trading code.",
+    parameters: z.object({
+      query: z.string().min(1).describe("Company name, alias, or code")
+    }),
+    execute: async ({ query }: { query: string }) => {
+      const r = resolveSymbol(query);
+      return JSON.stringify(r, null, 2);
     }
   });
 }

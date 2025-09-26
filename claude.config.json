@@ -4,11 +4,11 @@
       "command": "npx",
       "args": [
         "-y",
-        "tsx",
-        "C:/Random Projects/dse stock mcp/template-mcp-server/src/index.ts"
+        "github:SambasBoyyyy/dse-stock-mcp"
       ],
-      "env": {}
+      "env": {
+        "DSE_STOCK_API_KEY": "1234567890"
+      }
     }
   }
 }
-
