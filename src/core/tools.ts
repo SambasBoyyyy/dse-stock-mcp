@@ -107,4 +107,35 @@ export function registerTools(server: FastMCP) {
       return JSON.stringify(r, null, 2);
     }
   });
+
+  // DSE: Get company news for a symbol
+  server.addTool({
+    name: "get_company_news",
+    description: "Fetch all news items for a stock symbol.",
+    parameters: z.object({
+      symbol: z.string().min(1).describe("Ticker symbol, e.g., GP")
+    }),
+    execute: async ({ symbol }: { symbol: string }) => {
+      const apiKey = getApiKey();
+      const url = "https://web-production-ebd3.up.railway.app/tools/get_company_news";
+      const resolved = resolveSymbol(symbol);
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${apiKey}`,
+          "x-api-key": apiKey
+        },
+        body: JSON.stringify({ symbol: resolved.code })
+      });
+
+      if (!response.ok) {
+        const text = await response.text();
+        throw new Error(`Failed to fetch company news: ${response.status} ${text}`);
+      }
+
+      const data = await response.json();
+      return JSON.stringify(data, null, 2);
+    }
+  });
 }
