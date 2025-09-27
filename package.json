@@ -2,12 +2,19 @@
   "name": "dse-stock-mcp",
   "module": "src/index.ts",
   "type": "module",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "MCP server for Dhaka Stock Exchange (DSE) real-time data, historical data, and company news",
   "private": false,
   "main": "dist/index.js",
-  "bin": { "dse-stock-mcp": "dist/index.js" },
-  "files": ["dist", "README.md", "LICENSE", "stocks_rows.csv"],
+  "bin": {
+    "dse-stock-mcp": "dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "stocks_rows.csv"
+  ],
   "scripts": {
     "start": "node dist/index.js",
     "dev:tsx": "npx -y tsx src/index.ts",
@@ -79,7 +86,12 @@
       "node18-macos-x64",
       "node18-linux-x64"
     ],
-    "assets": ["dist/**/*"],
-    "externals": ["node:*","node:sqlite"]
+    "assets": [
+      "dist/**/*"
+    ],
+    "externals": [
+      "node:*",
+      "node:sqlite"
+    ]
   }
 }
