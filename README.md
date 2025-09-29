@@ -47,7 +47,7 @@ npm run dev:tsx
 ```
 
 ## Plug and Play Claude-Desktop/Cursor Integration
-Add this configuration to your `.cursor/mcp.json` (workspace) or `~/.cursor/claude_desktop_config` (global):
+Add this configuration to your `.cursor/mcp.json` (workspace) or `~/.claude/claude_desktop_config` (global):
 ```json
 {
   "mcpServers": {
