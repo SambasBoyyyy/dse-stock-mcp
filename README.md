@@ -57,7 +57,7 @@ npm start
 npm run dev:tsx
 ```
 
-## Claude-Desktop/Cursor Integration
+## Plug and Play Claude-Desktop/Cursor Integration
 
 Add this configuration to your `.cursor/mcp.json` (workspace) or `~/.cursor/claude_desktop_config` (global):
 
