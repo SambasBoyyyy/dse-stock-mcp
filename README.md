@@ -14,7 +14,7 @@ A very first MCP (Model Context Protocol) server that provides real-time and his
 - `get_company_news(symbol)` - Get latest news and announcements for a company
 
 **Input Flexibility**: All tools accept trading codes (e.g., `GP`, `UNILEVERCL`) or company names from the CSV.
-
+[![DSE Stock MCP Demo](https://img.youtube.com/vi/vOQT_lB3XfE/maxresdefault.jpg)](https://youtu.be/vOQT_lB3XfE)
 ## Installation
 Prerequisites:
 - Install Node.js LTS (includes npm and npx). Verify with:
