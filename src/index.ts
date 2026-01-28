@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+import "dotenv/config";
 import { FastMCP } from "fastmcp";
 import startServer from "./server/server.js";
 
