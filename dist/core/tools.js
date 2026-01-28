@@ -22,7 +22,7 @@ export function registerTools(server) {
         }),
         execute: async ({ symbol }) => {
             const apiKey = getApiKey();
-            const url = "https://web-production-ebd3.up.railway.app/tools/get_current_price";
+            const url = "https://stock-server-5bhv.onrender.com/tools/get_current_price";
             const resolved = resolveSymbol(symbol);
             const response = await fetch(url, {
                 method: "POST",
@@ -52,7 +52,7 @@ export function registerTools(server) {
         }),
         execute: async ({ symbol, start_date, end_date }) => {
             const apiKey = getApiKey();
-            const url = "https://web-production-ebd3.up.railway.app/tools/get_historical_data";
+            const url = "https://stock-server-5bhv.onrender.com/tools/get_historical_data";
             const resolved = resolveSymbol(symbol);
             const response = await fetch(url, {
                 method: "POST",
@@ -101,7 +101,7 @@ export function registerTools(server) {
         }),
         execute: async ({ symbol }) => {
             const apiKey = getApiKey();
-            const url = "https://web-production-ebd3.up.railway.app/tools/get_company_news";
+            const url = "https://stock-server-5bhv.onrender.com/tools/get_company_news";
             const resolved = resolveSymbol(symbol);
             const response = await fetch(url, {
                 method: "POST",
